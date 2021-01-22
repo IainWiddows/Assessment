@@ -1,0 +1,139 @@
+/*
+ * Made by Iain Widdows
+ * Student ID: 17009372
+ * Version: 3
+ * Last updated: 20/01/21
+ * Description: You have 3 options: Reformatting names the user input,finding the factorial of a number the user inputed or exit the application 
+ */
+
+
+package Assessment;
+
+import java.util.Scanner;
+
+import java.text.DecimalFormat;
+
+public class AssessmentFinal2 
+
+{
+		
+	static Scanner kboard = new Scanner(System.in);
+	static Scanner input = new Scanner(System.in);
+	
+	public static String Forename() 
+	{
+		
+			String Firstname ="";
+		
+			System.out.println("What is your first name");
+			Firstname =kboard.next();
+		
+			Firstname = Firstname.toLowerCase();
+			String Firstletter = Firstname.substring(0, 1);
+			return(Firstletter);
+	}
+
+	public static String Surname()	
+	
+	{ 	
+				
+			System.out.println("What is your Last name");
+			String Lastname=kboard.next().toLowerCase();
+			Lastname = Lastname.substring(0, 1).toUpperCase() + Lastname.substring(1);
+			
+			return(Lastname);
+			
+	}
+	
+	public static int Factorial()
+	
+	{
+		DecimalFormat df = new DecimalFormat("0.00");
+			  int i=1;
+			  
+			  int TotalofFactorial=1;  
+			  int numberentered=0;
+			  boolean isNumber;
+			 
+			  	  
+			  do {
+						  
+			  System.out.println("What number do you want to find the factorial of");
+			  
+			  if(input.hasNextInt()) {
+				  numberentered= input.nextInt();
+				  isNumber=true;
+				  
+				  for(i=1;i<=numberentered;i++)
+				  {    
+				      TotalofFactorial=TotalofFactorial*i;   
+				  } 
+				  
+				  System.out.println("Factorial of "+numberentered+" is: "+ df.format(TotalofFactorial)+"\n"); 
+				  
+			  }else {
+				  
+				  System.out.println("Please enter a number");
+				  isNumber=false;
+				  input.next();
+				  break;
+			  }
+			  
+			  			  			  
+			  }while (!(isNumber));
+			  
+			 
+	 return(TotalofFactorial);
+	 
+	}
+		
+	public static void main(String[] args) 
+	
+	{
+			int Choice =0;
+			
+			
+			do {	
+			
+			
+			System.out.println("Please enter 1 for formating username: 2 for factorial of a number: 3 to exit");
+			Choice = kboard.nextInt();
+		
+		
+			if(Choice==1)
+			
+			{	
+			String Firstletter="";
+			String Lastname="";
+			
+			Firstletter = Forename();
+			Lastname = Surname();
+			
+			
+			System.out.println("Hello "  + Firstletter + Lastname+"\n");
+			
+			}
+		
+		if(Choice==2)
+		{
+			int numberentered=0;
+			
+			numberentered=Factorial();
+			
+		}
+		
+		if(Choice==3)
+		{
+			System.out.println("Goodbye");
+			break;
+			
+		}
+			
+					
+			}while(Choice!=3);
+			
+			kboard.close();
+		
+	}
+	
+}
